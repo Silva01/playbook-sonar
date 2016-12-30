@@ -9,3 +9,9 @@
     src: "{{ sonar_link }}"
     dest: "{{ sonar_dest }}"
     remote_src: True
+
+ - name: Transferindo arquivo de Configuração do Sonar
+   template: src=sonar.properties dest={{ dest_conf }}
+
+ - name: Executando SonarQube
+ - script: {{ start_sonar }}
