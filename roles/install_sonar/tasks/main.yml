@@ -6,6 +6,6 @@
 
  - name: Instalando o SonarQube
    unarchive:
-    src: {{ sonar_link }}
-    dest: {{ sonar_dest }}
+    src: "{{ sonar_link }}"
+    dest: "{{ sonar_dest }}"
     remote_src: True

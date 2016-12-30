@@ -3,3 +3,6 @@
 
 sonar_link: https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-6.2.zip
 sonar_dest: /home/sonar
+
+db_user: <>
+db_senha: <>

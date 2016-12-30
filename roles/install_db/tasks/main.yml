@@ -1,0 +1,23 @@
+---
+  # Instala o MariaDB
+
+  - name: Instalando o Epel
+    yum: name={{ item }} state=installed
+    with_items:
+      - epel-release
+      - mariadb
+      - mariadb-server
+      - python
+      - MySQL-python
+      - libselinux-python
+      - libsemanage-python
+    notify: Gatilho do Serviço MariaDB
+
+  - name: Criando Usuário de Banco de Dados
+    mysql_user: name={{ db_user }} password={{ db_senha }} host='127.0.0.1' priv=*.*:ALL,GRANT state=present
+    notify: Gatilho de Restart MariaDB
+
+  - name: Criar a Database do Sonar
+    mysql_db:
+      name: sonar
+      state: present
