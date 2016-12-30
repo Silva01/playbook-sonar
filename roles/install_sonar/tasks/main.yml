@@ -1,0 +1,11 @@
+---
+  # Tarefas para instalação do SonarQube
+
+ - name: instalar unzip
+   yum: name=unzip state=present
+
+ - name: Instalando o SonarQube
+   unarchive:
+    src: {{ sonar_link }}
+    dest: {{ sonar_dest }}
+    remote_src: True
