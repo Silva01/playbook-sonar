@@ -1,0 +1,11 @@
+---
+  # grupo de variaveis Globais
+
+sonar_link: https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-6.2.zip
+sonar_dest: /home/sonar
+
+db_user: sonar
+db_senha: jkvkkud@#$&332423
+
+dest_conf: /home/sonar/sonarqube-6.2/conf
+start_sonar: /home/sonar/sonarqube-6.2/bin/linux-x86-64/sonar.sh --some-arguments start
