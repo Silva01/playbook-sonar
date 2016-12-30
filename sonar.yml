@@ -1,0 +1,16 @@
+---
+  # PlayBook para instalação do ambiente do SonarQube
+
+  - name: Intalação do SonarQube
+    hosts: sonar
+    remote_user: root
+
+    roles:
+      - install_sonar
+
+   - name: Instalação do Banco de dados MariaDB
+     hosts: db
+     remote_user: root
+
+     roles:
+       - install_db
