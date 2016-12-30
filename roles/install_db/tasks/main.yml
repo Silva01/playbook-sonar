@@ -2,7 +2,9 @@
   # Instala o MariaDB
 
   - name: Adicionando pacote do MySQL
-    shell: rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+    yum:
+      name: http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+      state: present
 
   - name: Instalando o Epel
     yum: name={{ item }} state=installed
