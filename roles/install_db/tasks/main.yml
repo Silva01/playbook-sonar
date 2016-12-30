@@ -1,21 +1,28 @@
 ---
   # Instala o MariaDB
 
+  - name: Adicionando pacote do MySQL
+    shell: rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+
   - name: Instalando o Epel
     yum: name={{ item }} state=installed
     with_items:
       - epel-release
-      - mariadb
-      - mariadb-server
+      - mysql-server
       - python
       - MySQL-python
       - libselinux-python
       - libsemanage-python
-    notify: Gatilho do Serviço MariaDB
+
+  - name: Start MariaDB
+    service: name=mysql state=started
 
   - name: Criando Usuário de Banco de Dados
-    mysql_user: name={{ db_user }} password={{ db_senha }} host='127.0.0.1' priv=*.*:ALL,GRANT state=present
-    notify: Gatilho de Restart MariaDB
+    mysql_user:
+      name: "{{ db_user }}"
+      password: "{{ db_senha }}"
+      priv: '*.*:ALL,GRANT'
+      state: present
 
   - name: Criar a Database do Sonar
     mysql_db:
