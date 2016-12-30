@@ -1,8 +1,11 @@
 ---
   # Tarefas para instalação do SonarQube
 
- - name: instalar unzip
-   yum: name=unzip state=present
+ - name: instalar unzip e Java
+   yum: name={{ item }} state=present
+   with_items:
+     - unzip
+     - java-1.8.0-openjdk
 
  - name: Instalando o SonarQube
    unarchive:
@@ -14,4 +17,4 @@
    template: src=sonar.properties dest={{ dest_conf }}
 
  - name: Executando SonarQube
- - script: {{ start_sonar }}
+   shell: "{{ start_sonar }}"
